@@ -4,7 +4,14 @@ const searchInput = document.querySelector(".search-box input");
 const searchResult = document.querySelector(".search-result");
 const singleLyrics = document.querySelector(".single-lyrics");
 
+/* LISTENER - ONLICK SEARCH RESULT */
 searchBtn.addEventListener("click", getSearchResult);
+/* LISTENER - PRESS ENTER SEARCH RESULT */
+searchInput.addEventListener("keypress", (e) => {
+	if (e.key === "Enter") {
+		getSearchResult();
+	}
+});
 
 /* GETTING SEARCH REASULT FROM API */
 function getSearchResult() {
@@ -47,6 +54,8 @@ function getSearchResult() {
 				}
 
 				searchInput.value = "";
+				searchResult.style.display = "block";
+				singleLyrics.innerHTML = "";
 			});
 	} else {
 		alert("Please wirte a valid song name");
