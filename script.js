@@ -4,12 +4,13 @@ const searchInput = document.querySelector(".search-box input");
 const searchResult = document.querySelector(".search-result");
 const singleLyrics = document.querySelector(".single-lyrics");
 
-/* LISTENER - ONLICK SEARCH RESULT */
+/* EVENT FOR SEARCH RESULT */
 searchBtn.addEventListener("click", getSearchResult);
-/* LISTENER - PRESS ENTER SEARCH RESULT */
-searchInput.addEventListener("keypress", (e) => {
-	if (e.key === "Enter") {
+searchInput.addEventListener("keyup", (e) => {
+	if (searchInput.value) {
 		getSearchResult();
+	} else {
+		searchResult.innerHTML = "";
 	}
 });
 
@@ -53,7 +54,6 @@ function getSearchResult() {
 					});
 				}
 
-				searchInput.value = "";
 				searchResult.style.display = "block";
 				singleLyrics.innerHTML = "";
 			});
@@ -78,6 +78,8 @@ function getLyrics(artist, title, songTitle, artistName) {
             `;
 			searchResult.style.display = "none";
 		});
+
+	searchInput.value = "";
 }
 
 /* BACK TO SEARCH RESULT */
