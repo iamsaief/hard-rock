@@ -7,6 +7,11 @@ const singleLyrics = document.querySelector(".single-lyrics");
 /* EVENT FOR SEARCH RESULT */
 searchBtn.addEventListener("click", getSearchResult);
 searchInput.addEventListener("keyup", (e) => {
+	if (e.key === "Enter") {
+		if (!searchInput.value) {
+			alert("Please wirte a valid song name");
+		}
+	}
 	if (searchInput.value) {
 		getSearchResult();
 	} else {
